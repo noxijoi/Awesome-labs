@@ -1,0 +1,16 @@
+{
+  "name": "awesome-lab-1-dns",
+  "version": "1.0.0",
+  "description": "lab 1, dns-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "intel": "^1.2.0",
+    "minimist": "^1.2.0"
+  }
+}
