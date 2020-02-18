@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js --file=D:\\javalab\\Awesome-labs\\awesome-lab-1-dns\\data.txt"
   },
-  "author": "",
+  "author": "noxijoi@gmail.com",
   "license": "ISC",
   "dependencies": {
     "intel": "^1.2.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "yargs": "^15.1.0"
   }
 }

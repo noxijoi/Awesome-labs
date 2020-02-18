@@ -3,11 +3,11 @@
 const net = require('net');
 const logger = require('intel');
 const fs = require('fs');
-const argv = require('minimist')(process.argv.slice(2));
+const args = require('yargs').argv;
 
 logger.addHandler(new logger.handlers.File('dns-server.log'));
 logger.addHandler(new logger.handlers.Console());
-const resourceFilePath = argv.file;
+const resourceFilePath = args.file;
 
 const HEADER_LENGTH = 16;
 
@@ -25,7 +25,8 @@ logger.info('server is listening');
 
 
 function readLocalRecords() {
-    let content = fs.readFileSync(resourceFilePath);
+    let content = fs.readFileSync(resourceFilePath, "utf-8");
+    console.log(content);
     let lines = content.split("\n");
     return lines.map(line => strToRecord(line));
 }
@@ -91,7 +92,7 @@ function parseRequest(request) {
 }
 
 function strToRecord(recordStr, isLocal = false) {
-    let parts = recordStr.split(" ");
+    let parts = recordStr.trim().split(" ");
     if (parts.length < 4) {
         throw new Error("Record is to short");
     }
