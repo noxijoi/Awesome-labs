@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemas</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <table>
+        <tr>
+            <th>Login</th>
+            <th>Password</th>
+        </tr>
+        {{#users}}
+        <tr>
+            <td>{{login}}</td>
+            <td>{{password}}</td>
+        </tr>
+        {{/users}}
+    </table>
+</body>
+</html>

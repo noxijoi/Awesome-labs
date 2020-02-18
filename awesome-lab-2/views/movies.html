@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemas</title>
+</head>
+<body>
+<h1>Movies</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Start date</th>
+        <th>Genres</th>
+    </tr>
+    {{#movies}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{startDate}}</td>
+        <td>{{genre}}</td>
+    </tr>
+    {{/movies}}
+</table>
+</body>
+</html>

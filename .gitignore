@@ -1,0 +1,5 @@
+*.log
+node_modules
+.idea
+/awesome-lab-1-dns/package-lock.json
+/awesome-lab-2/package-lock.json
