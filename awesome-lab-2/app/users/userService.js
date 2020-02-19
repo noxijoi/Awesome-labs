@@ -1,20 +1,13 @@
 const User = require('./user.model');
 
 
-const findAll = (req, res) =>{
-    User.find()
-        .then(
-            data =>{
-                res.render('users', {users:data})
-            }
-        ).catch(err =>{
-            res.status(500).send({message: err.message || "Some error occurred while creating the User."})
-    })
+const findAll = () =>{
+    return User.find();
 };
 
 
 
-function findOne(db, id) {
+function findOne(id) {
     return {
         id: 1,
         login: 'login',

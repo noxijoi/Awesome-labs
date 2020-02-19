@@ -3,17 +3,30 @@ const userService = require('./users/userService');
 module.exports = (app) => {
 
     // Create a new Note
-    app.post('/users',userService.createUser );
+    app.post('/users', (req, res) => {
+        //userService.createUser();
+    });
 
-    // Retrieve all Notes
-    app.get('/users', userService.findAll);
+    app.get('/users', (req, res) => {
+        userService.findAll()
+            .then(usersData => {
+                res.render('users', {users: usersData})
+            }).catch(err => {
+            res.render('error', {err: err.message || "Some error occurred while creating the User."});
+        });
+    });
+    app.get('/newUser', (req, res) => {
+        res.render('userForm')
+    });
+    app.get('/users/:userId', (req, res) => {
+        userService.findOne(req.params.userId)
+            .then(userData => res.render('userForm', {user: userData}))
+            .catch(err => {
+                res.render('error', {err: err.message || "No such user."});
+            });
+    });
 
-    // Retrieve a single Note with noteId
-    app.get('/users/:userId', userService.findOne);
-
-    // Update a Note with noteId
     app.put('/users/:userId', userService.updateUser);
 
-    // Delete a Note with noteId
     app.delete('/users/:userId', userService.deleteUser);
 };
