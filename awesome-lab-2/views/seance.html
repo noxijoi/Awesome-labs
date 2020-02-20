@@ -6,16 +6,20 @@
 </head>
 <body>
 <h1>Seances</h1>
+<a href="/">to homepage</a>
 <table>
     <tr>
         <th>Date</th>
-        <th>Tickets counts</th>
+        <th>Ticket count</th>
         <th>Cinema</th>
         <th>Movie</th>
     </tr>
     {{#seances}}
     <tr>
         <td>{{date}}</td>
+        <td>{{ticketCount}}</td>
+        <td>{{cinema}}</td>
+        <<td>{{movie}}</td>
     </tr>
     {{/seances}}
 </table>

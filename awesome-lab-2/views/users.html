@@ -6,14 +6,15 @@
 </head>
 <body>
     <h1>Users</h1>
+    <a href="/">to homepage</a>
     <table>
         <tr>
-            <th>Login</th>
+            <th>Login </th>
             <th>Password</th>
         </tr>
         {{#users}}
         <tr>
-            <td>{{login}}</td>
+            <td><a href="/users/{{id}}">{{login}}</a></td>
             <td>{{password}}</td>
         </tr>
         {{/users}}

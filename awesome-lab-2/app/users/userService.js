@@ -1,30 +1,25 @@
 const User = require('./user.model');
 
 
-const findAll = () =>{
+const findAll = () => {
     return User.find();
 };
 
-
-
 function findOne(id) {
-    return {
-        id: 1,
-        login: 'login',
-        password: 'password'
-    }
+    return User.findBy(id);
 }
 
-function createUser(db, user) {
-
+function createUser(user) {
+    const newUser = new User({...user});
+    return newUser.save();
 }
 
-function updateUser(db, user) {
-
+function updateUser(id, user) {
+    return User.findByIdAndUpdate(id, user)
 }
 
-function deleteUser(db, id) {
-
+function deleteUser(id) {
+    return User.findByIdAndRemove(id);
 }
 
 module.exports = {

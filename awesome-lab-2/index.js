@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const mustacheExpress = require('mustache-express');
-const userService = require('./app/users/userService');
 
 const app = express();
 
@@ -25,10 +24,19 @@ mongoose.connect(config.db.url, {
 	process.exit();
 });
 
-
 app.get('/', function (req, res) {
     res.render('homepage');
 });
+
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use((req, res, next)=>{
+   console.log(req.method);
+   console.log(req.url);
+   console.log(req.body);
+   next();
+});
+
 
 require('./app/routes')(app);
 
