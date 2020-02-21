@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinemas</title>
+</head>
+<body>
+<h1>Seance</h1>
+<a href="/seances">Back</a>
+<form action="/seances" method="POST">
+    <input type="date" placeholder="date" name="date" value={{seance.date}}>
+    <input type="text" placeholder="movie" name="movie" value={{seance.movie}}>
+    <input type="text" placeholder="cinema" name="cinema" value={{seance.cinema}}>
+    <input type="number" placeholder="ticketCount" name="ticketCount" value={{seance.ticketCount}}>
+    <input type="submit">Submit</input>
+</form>
+<a href="/seances/del/{{seance.id}}">delete</a>
+</body>
+</html>
+

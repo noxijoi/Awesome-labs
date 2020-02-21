@@ -6,7 +6,7 @@ const findAll = () => {
 };
 
 function findOne(id) {
-    return User.findBy(id);
+    return User.findById(id);
 }
 
 function createUser(user) {

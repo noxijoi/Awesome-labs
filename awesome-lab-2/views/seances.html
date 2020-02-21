@@ -7,6 +7,7 @@
 <body>
 <h1>Seances</h1>
 <a href="/">to homepage</a>
+<a href="/seances/newSeance">new</a>
 <table>
     <tr>
         <th>Date</th>
@@ -16,7 +17,7 @@
     </tr>
     {{#seances}}
     <tr>
-        <td>{{date}}</td>
+        <td><a href="/seances/{{id}}">{{date}}</a></td>
         <td>{{ticketCount}}</td>
         <td>{{cinema}}</td>
         <<td>{{movie}}</td>

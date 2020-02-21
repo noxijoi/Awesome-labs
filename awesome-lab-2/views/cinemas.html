@@ -7,17 +7,16 @@
 <body>
 <h1>Cinemas</h1>
 <a href="/">to homepage</a>
+<a href="/cinemas/newCinema">new</a>
 <table>
     <tr>
         <th>Name</th>
         <th>Address</th>
-        <th>Coordinates</th>
     </tr>
     {{#cinemas}}
     <tr>
-        <td>{{name}}</td>
+        <td><a href="/cinemas/{{id}}">{{name}}</a></td>
         <td>{{address}}</td>
-        <td>{{coordinates.longitude +" " + coordinates.latitude}}</td>
     </tr>
     {{/cinemas}}
 </table>
