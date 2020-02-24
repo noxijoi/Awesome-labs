@@ -37,7 +37,10 @@ app.use((req, res, next)=>{
    next();
 });
 
+require('./app/seances/routes')(app);
+require('./app/users/routes')(app);
+require('./app/movies/routes')(app);
+require('./app/cinemas/routes')(app);
 
-require('./app/routes')(app);
 
 app.listen(3000, () => console.log("Listening on port " + 3000 + " "));
