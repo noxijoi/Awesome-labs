@@ -6,7 +6,7 @@
 </head>
 <body>
 <a href="/">to homepage</a>
-<form action="/cinemas" method="POST">
+<form action="/cinemas/{{cinema.id}}" method="POST">
     <input type="text" placeholder="name" name="name" value={{cinema.name}}>
     <input type="text" placeholder="address" name="address" value={{cinema.address}}>
     <button type="submit"></button>

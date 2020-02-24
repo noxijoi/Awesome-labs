@@ -1,12 +1,14 @@
 const seanceService = require('./seancesService');
+const movieService = require('../movies/movieService');
+const cinemasService = require('../cinemas/cinemaService');
 
 module.exports = (app) => {
     //seances
     app.post('/seances', (req, res) => {
         let seance = {
             date: req.body.date,
-            movie: req.body.movie,
-            cinema: req.body.cinema,
+            movieId: req.body.movieId,
+            cinemaId: req.body.cinemaId,
             ticketCount: +req.body.ticketCount
         };
         seanceService.createSeance(seance)
@@ -21,17 +23,24 @@ module.exports = (app) => {
             res.render('error', {message: err.message || "Some error occurred while getting seances."});
         });
     });
-    app.get('/seances/newseance', (req, res) => {
-        res.render('seanceForm')
+    app.get('/seances/newseance', async (req, res) => {
+        let movies = await movieService.findAll();
+        let cinemas = await cinemasService.findAll();
+        res.render('seanceForm', {
+            cinemas: cinemas,
+            movies: movies
+        });
+
     });
-    app.get('/seances/:seanceId', (req, res) => {
-        seanceService.findOne(req.params.seanceId)
-            .then(seanceData => res.render('seanceForm', {
-                seance: seanceData
-            }))
-            .catch(err => {
-                res.render('error', {err: err.message || "No such seance."});
-            });
+    app.get('/seances/:seanceId', async (req, res) => {
+        let seance = await seanceService.findOne(req.params.seanceId);
+        let movies = await movieService.findAll();
+        let cinemas = await cinemasService.findAll();
+        res.render('seanceForm', {
+            seance: seance,
+            movies: movies,
+            cinemas: cinemas
+        })
     });
     app.post('/seances/:seanceId', (req, res) => {
         let seance = {

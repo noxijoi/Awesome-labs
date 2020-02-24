@@ -7,10 +7,18 @@
 <body>
 <h1>Seance</h1>
 <a href="/seances">Back</a>
-<form action="/seances" method="POST">
+<form action="/seances/{{seance.id}}" method="POST">
     <input type="date" placeholder="date" name="date" value={{seance.date}}>
-    <input type="text" placeholder="movie" name="movie" value={{seance.movie}}>
-    <input type="text" placeholder="cinema" name="cinema" value={{seance.cinema}}>
+    <select name="movieId" required>
+        {{#movies}}
+        <option value="{{id}}" selected="{{seance.movieId === id}}">{{name}}</option>
+        {{/movies}}
+    </select>
+    <select name="cinemaId" required>
+        {{#cinemas}}
+        <option value="{{id}}" selected="{{seance.cinemaId === id}}" >{{name}}</option>
+        {{/cinemas}}
+    </select>
     <input type="number" placeholder="ticketCount" name="ticketCount" value={{seance.ticketCount}}>
     <input type="submit">Submit</input>
 </form>

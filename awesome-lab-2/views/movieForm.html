@@ -7,7 +7,7 @@
 <body>
 <h1>Movies</h1>
 <a href="/movies">Back</a>
-<form action="/movies" method="POST">
+<form action="/movies/{{movie.id}}" method="POST">
     <input type="text" placeholder="name" name="name" value={{movie.name}}>
     <input type="date" placeholder="startDate" name="startDate" value={{movie.startDate}}>
     <input type="text" placeholder="origin country" name="originCountry" value={{movie.originCountry}}>
