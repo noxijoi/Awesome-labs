@@ -12,11 +12,13 @@
     <tr>
         <th>Name</th>
         <th>Address</th>
+        <th></th>
     </tr>
     {{#cinemas}}
     <tr>
         <td><a href="/cinemas/{{id}}">{{name}}</a></td>
         <td>{{address}}</td>
+        <td><a href="/cinemas/del/{{id}}">delete</a></td>
     </tr>
     {{/cinemas}}
 </table>

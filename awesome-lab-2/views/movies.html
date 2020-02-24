@@ -13,12 +13,17 @@
         <th>Name</th>
         <th>Start date</th>
         <th>Genres</th>
+        <th></th>
+
     </tr>
     {{#movies}}
     <tr>
         <td><a href="/movies/{{id}}">{{name}}</a></td>
         <td>{{startDate}}</td>
         <td>{{genre}}</td>
+        <td>
+            <a href="/movies/del/{{id}}">delete</a>
+        </td>
     </tr>
     {{/movies}}
 </table>

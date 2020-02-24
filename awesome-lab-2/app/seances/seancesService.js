@@ -11,7 +11,7 @@ function findOne(id) {
 
 function createSeance(seance) {
     const newSeance = new Seance({...seance});
-    return seance.save();
+    return newSeance.save();
 }
 
 function updateSeance(id, seance) {

@@ -14,13 +14,15 @@
         <th>Ticket count</th>
         <th>Cinema</th>
         <th>Movie</th>
+        <th></th>
     </tr>
     {{#seances}}
     <tr>
         <td><a href="/seances/{{id}}">{{date}}</a></td>
         <td>{{ticketCount}}</td>
         <td>{{cinema}}</td>
-        <<td>{{movie}}</td>
+        <td>{{movie}}</td>
+        <td><a href="/seances/del/{{id}}">delete</a></td>
     </tr>
     {{/seances}}
 </table>

@@ -5,20 +5,24 @@
     <title>Cinemas</title>
 </head>
 <body>
-    <h1>Users</h1>
-    <a href="/">to homepage</a>
-    <a href="/users/newUser">new</a>
-    <table>
-        <tr>
-            <th>Login </th>
-            <th>Password</th>
-        </tr>
-        {{#users}}
-        <tr>
-            <td><a href="/users/{{id}}">{{login}}</a></td>
-            <td>{{password}}</td>
-        </tr>
-        {{/users}}
-    </table>
+<h1>Users</h1>
+<a href="/">to homepage</a>
+<a href="/users/newUser">new</a>
+<table>
+    <tr>
+        <th>Login</th>
+        <th>Password</th>
+        <th></th>
+    </tr>
+    {{#users}}
+    <tr>
+        <td><a href="/users/{{id}}">{{login}}</a></td>
+        <td>{{password}}</td>
+        <td>
+            <a href="/users/del/{{id}}">delete</a>
+        </td>
+    </tr>
+    {{/users}}
+</table>
 </body>
 </html>
