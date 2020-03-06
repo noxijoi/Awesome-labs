@@ -1,3 +1,3 @@
-export const GUEST = 'GUEST';
-export const USER = 'USER';
-export const ADMIN = 'ADMIN';
+export const GUEST = 'guest';
+export const USER = 'user';
+export const ADMIN = 'admin';

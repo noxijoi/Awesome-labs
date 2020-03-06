@@ -1,4 +1,7 @@
 import {GUEST} from '../users/roles';
+import {AUTH_ERROR} from "./oauth/actions";
+import {RECEIVE_TOKEN} from "./oauth/actions";
+import {RECEIVE_USER_DATA} from "./oauth/actions";
 
 const initialState = {
     authorized: false,
@@ -7,16 +10,37 @@ const initialState = {
         role: GUEST
     },
     token: {
-        yaToken: null,
-        vkToken: null,
-        fbToken: null
+        value:'',
+        service:''
     },
-    tokenType: '',
-    tokenService: ''
+    userData:{
+    },
+    tokenType: 'OAuth'
 };
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
+        case AUTH_ERROR:{
+            return {
+                ...state,
+                authorized: false,
+            }
+        }
+        case RECEIVE_TOKEN:{
+            return {
+                ...state,
+                token:{
+                    value: action.token,
+                    service: action.service
+                }
+            }
+        }
+        case RECEIVE_USER_DATA:{
+            return {
+                ... state,
+                userData: action.userData
+            }
+        }
         default:
             return state;
     }

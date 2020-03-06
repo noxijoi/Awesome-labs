@@ -4,6 +4,9 @@ import {Route} from "react-router-dom";
 import Home from "./home/Home";
 import {AuthorizationContainer} from "./AuthorizationContainer";
 import {makeStyles} from "@material-ui/core/styles";
+import {vkConfig} from '../auth/oauth/vk/vkAPIConfig';
+import {fbConfig} from '../auth/oauth/facebook/facebookAPIConfig';
+import {yaConfig} from '../auth/oauth/yandex/yandexAPIConfig';
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -24,6 +27,7 @@ export default function Content() {
                 <div className={classes.toolbar} />
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={AuthorizationContainer}/>
+                <Route path={yaConfig.redirectURL} component={YandexAuthContainer}/>
                 {/*<Route path="/users" component={UsersTable}/>
                 <Route path="/users/:userID" component={UserPage}/>
                 <Route path="/cinemas" component={CinemasTable}/>
