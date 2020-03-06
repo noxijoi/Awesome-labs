@@ -38,6 +38,7 @@
   "devDependencies": {
     "@material-ui/icons": "^4.9.1",
     "clsx": "^1.1.0",
+    "ky": "^0.18.0",
     "react-router-dom": "^5.1.2",
     "redux-thunk": "^2.3.0"
   }

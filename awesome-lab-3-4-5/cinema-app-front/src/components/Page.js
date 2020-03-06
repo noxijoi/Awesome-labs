@@ -16,7 +16,8 @@ const sections = [
     'Users',
     'Seances',
     'Movies',
-    'Cinemas'
+    'Cinemas',
+    'Login'
 ];
 
 const drawerWidth = 240;
