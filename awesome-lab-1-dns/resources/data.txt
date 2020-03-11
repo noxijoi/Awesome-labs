@@ -1,0 +1,2 @@
+domain.com A 3600 192.168.1.1
+sub.domain.com CNAME 3600 domain.com
