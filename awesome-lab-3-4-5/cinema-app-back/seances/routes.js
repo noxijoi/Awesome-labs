@@ -4,7 +4,7 @@ const cinemasService = require('../cinemas/cinemaService');
 
 module.exports = (app) => {
     //seances
-    app.post('/seances', (req, res) => {
+    app.post('/api/seances', (req, res) => {
         let seance = {
             date: req.body.date,
             movieId: req.body.movieId,
@@ -12,37 +12,26 @@ module.exports = (app) => {
             ticketCount: +req.body.ticketCount
         };
         seanceService.createSeance(seance)
-            .then(res.render('ok', {message: "seance created"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while creating the seance."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while creating the seance."}));
     });
-    app.get('/seances', (req, res) => {
+    app.get('/api/seances', (req, res) => {
         seanceService.findAll()
-            .then(seanceData => {
-                res.render('seances', {seances: seanceData})
-            }).catch(err => {
-            res.render('error', {message: err.message || "Some error occurred while getting seances."});
+            .then(seanceData => {res.send({seances: seanceData})})
+            .catch(err => {res.send({error: err.message || "Some error occurred while getting seances."});
         });
     });
-    app.get('/seances/newseance', async (req, res) => {
-        let movies = await movieService.findAll();
-        let cinemas = await cinemasService.findAll();
-        res.render('seanceForm', {
-            cinemas: cinemas,
-            movies: movies
-        });
-
-    });
-    app.get('/seances/:seanceId', async (req, res) => {
+    app.get('/api/seances/:seanceId', async (req, res) => {
         let seance = await seanceService.findOne(req.params.seanceId);
         let movies = await movieService.findAll();
         let cinemas = await cinemasService.findAll();
-        res.render('seanceForm', {
+        res.send({
             seance: seance,
             movies: movies,
             cinemas: cinemas
         })
     });
-    app.post('/seances/:seanceId', (req, res) => {
+    app.post('/api/seances/:seanceId', (req, res) => {
         let seance = {
             date: req.body.date,
             movie: req.body.movie,
@@ -50,12 +39,12 @@ module.exports = (app) => {
             tickerCount: req.body.tickerCount
         };
         seanceService.updateSeance(req.params.seanceId, seance)
-            .then(res.render('ok', {message: "seance updated"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while updating seance."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while updating seance."}));
     });
     app.get('/seances/del/:seanceId', (req, res) => {
         seanceService.deleteSeance(req.params.seanceId)
-            .then(res.render('ok', {message: "seance deleted"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while deleting seance."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while deleting seance."}));
     });
 };

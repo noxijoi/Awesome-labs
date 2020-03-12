@@ -1,15 +1,12 @@
 import {store} from "./store";
 import ky from 'ky';
 
-export default function request(url, options) {
+export default function doRequest(url, options) {
     const headers = new Headers({'Content-Type': 'application/json'});
     const state = store.getState();
-    const token = state.auth.token.yaToken
-        || state.auth.token.vkToken
-        || state.auth.token.fbToken
-        || "";
+    const token = state.auth.token.value;
     const tokenType = state.auth.tokenType;
-    const tokenService = state.auth.tokenService;
+    const tokenService = state.auth.token.service;
 
     url = window.location.origin + '/' + url;
     if (token && tokenType && tokenService) {

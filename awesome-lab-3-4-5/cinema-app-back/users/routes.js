@@ -1,46 +1,43 @@
 const userService = require('./userService');
 module.exports = (app) => {
-    app.post('/users', (req, res) => {
+    app.post('/api/users', (req, res) => {
         let user = {
             login: req.body.login,
             password: req.body.password
         };
         userService.createUser(user)
-            .then(res.render('ok', {message: "user created"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while creating the User."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while creating the User."}));
     });
-    app.get('/users', (req, res) => {
+    app.get('/api/users', (req, res) => {
         userService.findAll()
             .then(usersData => {
-                res.render('users', {users: usersData})
+                res.send({users: usersData})
             }).catch(err => {
-            res.render('error', {message: err.message || "Some error occurred while creating the User."});
+            res.send({error: err.message || "Some error occurred while getting the User."});
         });
     });
-    app.get('/users/newUser', (req, res) => {
-        res.render('userForm')
-    });
-    app.get('/users/:userId', (req, res) => {
+    app.get('/api/users/:userId', (req, res) => {
         userService.findOne(req.params.userId)
-            .then(userData => res.render('userForm', {
+            .then(userData => res.send({
                 user: userData,
             }))
             .catch(err => {
-                res.render('error', {err: err.message || "No such user."});
+                res.send({error: err.message || "No such user."});
             });
     });
-    app.post('/users/:userId', (req, res) => {
+    app.post('/api/users/:userId', (req, res) => {
         let user = {
             login: req.body.login,
             password: req.body.password
         };
         userService.updateUser(req.params.userId, user)
-            .then(res.render('ok', {message: "user updated"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while updating user."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while updating user."}));
     });
-    app.get('/users/del/:userId', (req, res) => {
+    app.get('/api/users/del/:userId', (req, res) => {
         userService.deleteUser(req.params.userId)
-            .then(res.render('ok', {message: "user deleted"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while deleting user."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while deleting user."}));
     });
 };

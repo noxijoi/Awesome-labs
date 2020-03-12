@@ -2,47 +2,47 @@ const cinemaService = require('./cinemaService');
 
 module.exports = (app) => {
     //cinemas
-    app.post('/cinemas', (req, res) => {
+    app.post('/api/cinemas', (req, res) => {
         let cinema = {
             name: req.body.name,
             address: req.body.address
         };
         cinemaService.createCinema(cinema)
-            .then(res.render('ok', {message: "cinema created"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while creating the Cinema."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while creating the Cinema."}));
     });
-    app.get('/cinemas', (req, res) => {
+    app.get('/api/cinemas', (req, res) => {
         cinemaService.findAll()
             .then(cinemasData => {
-                res.render('cinemas', {cinemas: cinemasData})
+                res.send({cinemas: cinemasData})
             }).catch(err => {
-            res.render('error', {message: err.message || "Some error occurred while creating the cinema."});
+            res.send({error: err.message || "Some error occurred while creating the cinema."});
         });
     });
-    app.get('/cinemas/newCinema', (req, res) => {
-        res.render('cinemaForm')
+    app.get('/api/cinemas/newCinema', (req, res) => {
+        res.send('cinemaForm')
     });
-    app.get('/cinemas/:cinemaId', (req, res) => {
+    app.get('/api/cinemas/:cinemaId', (req, res) => {
         cinemaService.findOne(req.params.cinemaId)
-            .then(cinemaData => res.render('cinemaForm', {
+            .then(cinemaData => res.send({
                 cinema: cinemaData
             }))
             .catch(err => {
-                res.render('error', {err: err.message || "No such cinema."});
+                res.send({error: err.message || "No such cinema."});
             });
     });
-    app.post('/cinemas/:cinemaId', (req, res) => {
+    app.post('/api/cinemas/:cinemaId', (req, res) => {
         let cinema = {
             name: req.body.name,
             address: req.body.address
         };
         cinemaService.updateCinema(req.params.cinemaId, cinema)
-            .then(res.render('ok', {message: "cinema updated"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while updating cinema."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while updating cinema."}));
     });
-    app.get('/cinemas/del/:cinemaId', (req, res) => {
+    app.get('/api/cinemas/del/:cinemaId', (req, res) => {
         cinemaService.deleteCinema(req.params.cinemaId)
-            .then(res.render('ok', {message: "cinema deleted"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while deleting cinema."}));
+            .then(res.status(200).json())
+            .catch(err => res.send({error: err.message || "Some error occurred while deleting cinema."}));
     });
 };

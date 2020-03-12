@@ -7,6 +7,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {vkConfig} from '../auth/oauth/vk/vkAPIConfig';
 import {fbConfig} from '../auth/oauth/facebook/facebookAPIConfig';
 import {yaConfig} from '../auth/oauth/yandex/yandexAPIConfig';
+import YandexAuthContainer from "../auth/oauth/yandex/YandexAuthContainer";
 
 const useStyles = makeStyles(theme => ({
     content: {

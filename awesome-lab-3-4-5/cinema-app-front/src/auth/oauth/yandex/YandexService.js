@@ -1,9 +1,9 @@
 import {yaConfig} from "./yandexAPIConfig";
-import request from "../../../Service";
+import doRequest from "../../../Service";
 
 class YandexService {
     async getUserData() {
-        return request(yaConfig.requestUserDataURL )
+        return doRequest(yaConfig.requestUserDataURL )
     }
 }
 
