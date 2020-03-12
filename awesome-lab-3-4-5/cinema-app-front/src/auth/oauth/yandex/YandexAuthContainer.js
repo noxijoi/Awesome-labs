@@ -1,7 +1,10 @@
-import React from "react";
+import React, {Component} from "react";
 import {config} from '../oauthConfig';
 import YandexService from "./YandexService";
-import {receiveToken, receiveUserData} from "../actions";
+import {authError, receiveToken, receiveUserData} from "../actions";
+import {CircularProgress} from "@material-ui/core";
+import {Redirect} from "react-router";
+import {connect} from "react-redux";
 
 class YandexAuthContainer extends Component {
     componentDidMount() {
@@ -13,32 +16,30 @@ class YandexAuthContainer extends Component {
         } else {
             const errorCode = this.props.location.query.error;
             const errorDesc = this.props.location.query.error_description;
-            this.props.setAuthError(errorCode, errorDesc)
+            this.props.setAuthError(errorDesc)
         }
     }
 
     render() {
-            // <YandexAuth auth ={this.props.auth}/>
-        return (
-            <div/>
-        );
+        if (this.props.auth.authorized) {
+            return (
+                <Redirect to="/home"/>
+            );
+        } else {
+            return (<CircularProgress/>)
+        }
     }
 }
-
-const setAuthError = (errCode, errDesc) => {
-    return async dispatch => {
-        dispatch(setAuthError(errCode, errDesc));
-    }
-};
 
 
 const fetchYandexUserInfo = () => {
     return async dispatch => {
         try {
             const userData = await YandexService.getUserData();
-            dispatch(receiveUserData(userData))
+            dispatch(receiveUserData(userData));
+
         } catch (e) {
-            dispatch(setAuthError(e))
+            dispatch(authError(e))
         }
     }
 };
@@ -52,8 +53,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         setToken: (token) => dispatch(receiveToken(token, config.services.yandex)),
-        fetchYandexUserInfo: () => dispatch(fetchYandexUserInfo())
+        fetchYandexUserInfo: () => dispatch(fetchYandexUserInfo()),
+        setAuthError: (desc) => dispatch(authError(desc))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps)(YandexAuthContainer);

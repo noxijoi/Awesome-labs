@@ -5,4 +5,5 @@ class UserService {
     async login(login){
         return doRequest(API.LOG_IN,{method: 'POST'} )
     }
+
 }

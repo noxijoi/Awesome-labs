@@ -1,5 +1,5 @@
 import {Container} from "@material-ui/core";
-import React, {Component} from "react";
+import React from "react";
 import {Route} from "react-router-dom";
 import Home from "./home/Home";
 import {AuthorizationContainer} from "./AuthorizationContainer";
