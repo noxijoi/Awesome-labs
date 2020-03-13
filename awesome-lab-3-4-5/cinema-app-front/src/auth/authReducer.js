@@ -13,6 +13,7 @@ const initialState = {
         value:'',
         service:''
     },
+    jwt: '',
     userData:{
     },
     tokenType: 'OAuth'

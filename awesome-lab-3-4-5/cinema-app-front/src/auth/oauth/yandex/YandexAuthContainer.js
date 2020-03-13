@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {config} from '../oauthConfig';
 import YandexService from "./YandexService";
 import {authError, receiveToken, receiveUserData} from "../actions";
 import {CircularProgress} from "@material-ui/core";
@@ -52,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setToken: (token) => dispatch(receiveToken(token, config.services.yandex)),
+        setToken: (token) => dispatch(receiveToken(token, 'yandex')),
         fetchYandexUserInfo: () => dispatch(fetchYandexUserInfo()),
         setAuthError: (desc) => dispatch(authError(desc))
     };

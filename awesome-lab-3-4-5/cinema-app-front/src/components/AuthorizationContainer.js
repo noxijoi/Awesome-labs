@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Box} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import oauthConfig from '../auth/oauth/oauthConfig';
 import {vkConfig} from '../auth/oauth/vk/vkAPIConfig';
 import {fbConfig} from '../auth/oauth/facebook/facebookAPIConfig';
 import {yaConfig} from '../auth/oauth/yandex/yandexAPIConfig';
