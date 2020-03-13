@@ -4,14 +4,12 @@ import ky from 'ky';
 export default function doRequest(url, options) {
     const headers = new Headers({'Content-Type': 'application/json'});
     const state = store.getState();
-    const token = state.auth.token.value;
+    const token = state.auth.jwt;
     const tokenType = state.auth.tokenType;
-    const tokenService = state.auth.token.service;
 
     url = window.location.origin + '/' + url;
-    if (token && tokenType && tokenService) {
+    if (token && tokenType) {
         headers.append("Authorization", tokenType + " " + token);
-        headers.append("TokenService", tokenService);
     }
     options = {...options, headers: headers};
     switch (options.method) {

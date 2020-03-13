@@ -1,5 +1,5 @@
 export const API ={
-    LOG_IN: "api/login",
+    LOG_IN: "api/users/login",
     USERS: "api/users",
     CINEMAS: "api/cinemas",
     MOVIES: "api/movies",

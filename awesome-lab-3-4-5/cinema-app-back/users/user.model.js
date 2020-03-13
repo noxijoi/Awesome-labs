@@ -5,17 +5,9 @@ const appConfig = require('../config');
 
 const UserSchema = mongoose.Schema({
     login: {
-        type: String,
-        required: true
-    },
-    sex: {
-        type: String,
-        enum: ['W', 'M']
-    },
-    email: {
         type: String
     },
-    accessToken: {
+    serviceAccessToken: {
         type: String
     },
     authorizationService: {
@@ -28,7 +20,6 @@ const UserSchema = mongoose.Schema({
     role: {
         type: String,
         enum: ['user', 'admin'],
-        required: true,
         default: 'user'
     },
 

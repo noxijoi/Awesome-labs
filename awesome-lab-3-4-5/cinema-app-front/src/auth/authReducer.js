@@ -9,14 +9,10 @@ const initialState = {
         id: null,
         role: GUEST
     },
-    token: {
-        value:'',
-        service:''
-    },
     jwt: '',
+    tokenType: 'Bearer',
     userData:{
     },
-    tokenType: 'OAuth'
 };
 
 const authReducer = (state = initialState, action) => {
@@ -25,15 +21,6 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 authorized: false,
-            }
-        }
-        case RECEIVE_TOKEN:{
-            return {
-                ...state,
-                token:{
-                    value: action.token,
-                    service: action.service
-                }
             }
         }
         case RECEIVE_USER_DATA:{

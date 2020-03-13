@@ -21,7 +21,7 @@ mongoose.connect(config.db.url, {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
-
+app.use(express.json());
 app.use((req, res, next)=>{
     console.log(req.method);
     console.log(req.url);

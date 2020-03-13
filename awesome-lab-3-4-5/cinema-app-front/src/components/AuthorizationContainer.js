@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import {Box} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import {vkConfig} from '../auth/oauth/vk/vkAPIConfig';
-import {fbConfig} from '../auth/oauth/facebook/facebookAPIConfig';
-import {yaConfig} from '../auth/oauth/yandex/yandexAPIConfig';
+
 import Link from "@material-ui/core/Link";
 
 export class AuthorizationContainer extends Component {
