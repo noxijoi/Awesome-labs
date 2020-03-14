@@ -1,7 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import {config} from '../oauthConfig';
 import YandexService from "./YandexService";
 import {receiveToken, receiveUserData} from "../actions";
+import {connect} from "react-redux";
 
 class YandexAuthContainer extends Component {
     componentDidMount() {

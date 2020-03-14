@@ -8,6 +8,8 @@
 <h1>Seance</h1>
 <a href="/seances">Back</a>
 <form action="/seances/{{seance.id}}" method="POST">
+    <input type="text" hidden placeholder="date" name="date" value={{seance.date}}>
+
     <input type="date" placeholder="date" name="date" value={{seance.date}}>
     <select name="movieId" required>
         {{#movies}}
