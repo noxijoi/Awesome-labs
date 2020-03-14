@@ -1,53 +1,51 @@
 const movieService = require('./movieService');
+const express = require("express");
+const router = express.Router();
 
-module.exports = (app) => {
 
-    //movies
-    app.post('/movies', (req, res) => {
-        let movie = {
-            name: req.body.name,
-            startDate: req.body.startDate,
-            originCountry: req.body.originCountry,
-            genre: req.body.genre
-        };
-        movieService.createMovie(movie)
-            .then(res.render('ok', {message: "movie created"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while creating the movie."}));
+router.post('/', (req, res) => {
+    let movie = {
+        name: req.body.name,
+        startDate: req.body.startDate,
+        originCountry: req.body.originCountry,
+        genre: req.body.genre
+    };
+    movieService.createMovie(movie)
+        .then(res.status(200).json())
+        .catch(err => res.send({error: err.message || "Some error occurred while creating the movie."}));
+});
+router.get('/', (req, res) => {
+    movieService.findAll()
+        .then(movieData => {
+            res.send('movies', {movies: movieData})
+        }).catch(err => {
+        res.send({error: err.message || "Some error occurred while getting movies."});
     });
-    app.get('/movies', (req, res) => {
-        movieService.findAll()
-            .then(movieData => {
-                res.render('movies', {movies: movieData})
-            }).catch(err => {
-            res.render('error', {message: err.message || "Some error occurred while getting movies."});
+});
+router.get('/:movieId', (req, res) => {
+    movieService.findOne(req.params.movieId)
+        .then(movieData => res.send({
+            movie: movieData
+        }))
+        .catch(err => {
+            res.send({err: err.message || "No such movie."});
         });
-    });
-    app.get('/movies/newMovie', (req, res) => {
-        res.render('movieForm')
-    });
-    app.get('/movies/:movieId', (req, res) => {
-        movieService.findOne(req.params.movieId)
-            .then(movieData => res.render('movieForm', {
-                movie: movieData
-            }))
-            .catch(err => {
-                res.render('error', {err: err.message || "No such movie."});
-            });
-    });
-    app.post('/movies/:movieId', (req, res) => {
-        let movie = {
-            name: req.body.name,
-            startDate: req.body.startDate,
-            originCountry: req.body.originCountry,
-            genre: req.body.genre
-        };
-        movieService.updateMovie(req.params.movieId, movie)
-            .then(res.render('ok', {message: "movie updated"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while updating movie."}));
-    });
-    app.get('/movies/del/:movieId', (req, res) => {
-        movieService.deleteMovie(req.params.movieId)
-            .then(res.render('ok', {message: "movie deleted"}))
-            .catch(err => res.render('error', {message: err.message || "Some error occurred while deleting movie."}));
-    });
-};
+});
+router.put('/:movieId', (req, res) => {
+    let movie = {
+        name: req.body.name,
+        startDate: req.body.startDate,
+        originCountry: req.body.originCountry,
+        genre: req.body.genre
+    };
+    movieService.updateMovie(req.params.movieId, movie)
+        .then(res.status(200).json())
+        .catch(err => res.send({error: err.message || "Some error occurred while updating movie."}));
+});
+router.delete('/:movieId', (req, res) => {
+    movieService.deleteMovie(req.params.movieId)
+        .then(res.status(200).json())
+        .catch(err => res.send({error: err.message || "Some error occurred while deleting movie."}));
+});
+
+module.exports = router;

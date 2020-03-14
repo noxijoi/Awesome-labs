@@ -9,6 +9,11 @@ function findOne(id) {
     return User.findById(id);
 }
 
+function findByLogin(login){
+    return User.find()
+        .where('login').equals(login)
+}
+
 function createUser(user) {
     const newUser = new User({...user});
     return newUser.save();
@@ -25,6 +30,7 @@ function deleteUser(id) {
 module.exports = {
     createUser: createUser,
     findOne: findOne,
+    findByEmail: findByLogin,
     findAll: findAll,
     updateUser: updateUser,
     deleteUser: deleteUser

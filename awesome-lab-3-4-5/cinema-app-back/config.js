@@ -6,8 +6,11 @@ const appConfig = {
     },
     authenticationServices:{
         vk: 'vk',
-        yandex: 'ya',
-        facebook: 'fb'
+        yandex: 'yandex',
+        facebook: 'facebook'
+    },
+    auth:{
+        privateKey: 'тыгыдыкский конь'
     }
 };
 
