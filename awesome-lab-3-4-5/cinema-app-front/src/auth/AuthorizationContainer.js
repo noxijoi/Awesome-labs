@@ -3,7 +3,7 @@ import {Box} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
 import Link from "@material-ui/core/Link";
-import {oauthConfig} from "../auth/oauth/oauthConfig";
+import {oauthConfig} from "./oauth/oauthConfig";
 
 export class AuthorizationContainer extends Component {
     render() {

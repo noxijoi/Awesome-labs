@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {authError, receiveUserData} from "../actions";
-import UserService from "../../../users/UserService";
+import UserService from "../../../components/users/UserService";
 import {CircularProgress} from "@material-ui/core";
 import {Redirect} from "react-router";
 import {connect} from "react-redux";

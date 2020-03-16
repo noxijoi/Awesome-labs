@@ -1,6 +1,6 @@
 import React from "react";
-import {cinemaCreated} from "./actions";
-import CinemaService from "./CinemaService";
+import {cinemaCreated} from "../actions";
+import CinemaService from "../CinemaService";
 import {connect} from "react-redux";
 import CreateCinema from "./CreateCinema";
 

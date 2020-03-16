@@ -1,5 +1,5 @@
-import {API} from "../api";
-import doRequest from "../Service";
+import {API} from "../../api";
+import doRequest from "../../Service";
 
 class UserService {
     async login(accessToken, service) {
