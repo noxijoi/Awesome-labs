@@ -2,13 +2,13 @@ import React from 'react';
 import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import {store} from "./store";
-import {Page} from "./components/Page";
+import PageContainer from "./components/page/PageContainer";
 
 const App = () => (
     <Provider store={store}>
         <BrowserRouter>
-            <Page>
-            </Page>
+            <PageContainer>
+            </PageContainer>
         </BrowserRouter>
     </Provider>
 );

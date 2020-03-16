@@ -12,13 +12,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Link from "@material-ui/core/Link";
 import Content from "./Content";
 
-const sections = [
-    'Users',
-    'Seances',
-    'Movies',
-    'Cinemas',
-    'Login'
-];
+
+
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -44,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export const Page = () => {
+export const Page = (props) => {
     const classes = useStyles();
 
     return (
@@ -68,10 +63,10 @@ export const Page = () => {
                 <div className={classes.toolbar}/>
                 <Divider/>
                 <List>
-                    {sections.map((text) => (
-                        <ListItem button key={text}>
-                            <Link href={"/" + text}>
-                                <ListItemText primary={text}/>
+                    {props.options.map((option) => (
+                        <ListItem button key={option.title}>
+                            <Link href={option.url}>
+                                <ListItemText primary={option.title}/>
                             </Link>
                         </ListItem>
                     ))}
@@ -85,4 +80,3 @@ export const Page = () => {
         </div>
     );
 };
-
