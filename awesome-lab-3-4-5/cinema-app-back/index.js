@@ -31,6 +31,6 @@ app.use((req, res, next)=>{
 app.use('/api/users', userRouter);
 app.use('/api/seances', seancesRouter);
 app.use('/api/movies', moviesRouter);
-app.use('api/cinemas', cinemasRouter);
+app.use('/api/cinemas', cinemasRouter);
 
 app.listen(3030, () => console.log("Listening on port " + 3030 + " "));

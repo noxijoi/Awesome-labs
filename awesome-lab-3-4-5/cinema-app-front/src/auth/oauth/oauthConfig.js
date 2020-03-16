@@ -11,7 +11,7 @@ export const oauthConfig ={
     },
     ya:{
         URL: 'https://oauth.yandex.ru/authorize',
-        redirectURL: '/auth/yandex',
+        redirectURL: 'http://localhost:3000/auth/yandex',
         ID:'f78cfa214d384601beb42cded18e76d7',
     }
 };

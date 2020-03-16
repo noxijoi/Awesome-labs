@@ -1,4 +1,4 @@
-import {Page} from "../Page";
+import {Page} from "./Page";
 import React from "react";
 
 import {connect} from "react-redux";

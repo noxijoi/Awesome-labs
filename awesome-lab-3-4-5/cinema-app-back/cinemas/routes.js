@@ -3,14 +3,13 @@ const express = require("express");
 const router = express.Router();
 
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     let cinema = {
         name: req.body.name,
         address: req.body.address
     };
-    cinemaService.createCinema(cinema)
-        .then(res.status(200).json())
-        .catch(err => res.send({error: err.message || "Some error occurred while creating the Cinema."}));
+    const createdCinema = await cinemaService.createCinema(cinema);
+    res.send(createdCinema);
 });
 router.get('/', (req, res) => {
     cinemaService.findAll()

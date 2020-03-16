@@ -6,6 +6,7 @@ import {AuthorizationContainer} from "./AuthorizationContainer";
 import {makeStyles} from "@material-ui/core/styles";
 import YandexAuthContainer from "../auth/oauth/yandex/YandexAuthContainer";
 import {oauthConfig} from "../auth/oauth/oauthConfig";
+import CreateCinemaContainer from "./cinemas/CreateCinemaContainer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +28,8 @@ export default function Content() {
                 <div className={classes.toolbar}/>
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={AuthorizationContainer}/>
-                <Route path={yaConfig.redirectURL} component={YandexAuthContainer}/>
+                <Route path="/auth/yandex" component={YandexAuthContainer}/>
+                <Route path="/cinemas/new" component={CreateCinemaContainer}/>
                 {/*<Route path="/users" component={UsersTable}/>
                 <Route path="/users/:userID" component={UserPage}/>
                 <Route path="/cinemas" component={CinemasTable}/>

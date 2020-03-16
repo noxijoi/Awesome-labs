@@ -1,6 +1,5 @@
 import {GUEST} from '../users/roles';
 import {AUTH_ERROR, LOG_OUT} from "./oauth/actions";
-import {RECEIVE_TOKEN} from "./oauth/actions";
 import {RECEIVE_USER_DATA} from "./oauth/actions";
 
 const initialState = {

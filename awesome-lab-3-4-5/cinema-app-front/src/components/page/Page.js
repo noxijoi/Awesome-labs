@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Link from "@material-ui/core/Link";
-import Content from "./Content";
+import Content from "../Content";
 
 
 
