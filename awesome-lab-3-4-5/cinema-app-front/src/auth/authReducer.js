@@ -1,18 +1,15 @@
-import {GUEST} from '../users/roles';
+import {GUEST} from '../components/users/roles';
 import {AUTH_ERROR, LOG_OUT} from "./oauth/actions";
-import {RECEIVE_TOKEN} from "./oauth/actions";
 import {RECEIVE_USER_DATA} from "./oauth/actions";
 
 const initialState = {
     authorized: false,
-    user: {
-        id: null,
-        role: GUEST
-    },
-    jwt: '',
+    id: null,
+    login: null,
+    token: null,
+    role: GUEST,
     tokenType: 'Bearer',
-    userData:{
-    },
+
 };
 
 const authReducer = (state = initialState, action) => {
@@ -24,9 +21,14 @@ const authReducer = (state = initialState, action) => {
             }
         }
         case RECEIVE_USER_DATA:{
+            const userData = action.userData;
             return {
-                ... state,
-                userData: action.userData
+                ...state,
+                authorized: true,
+                id: userData._id,
+                login: userData.login,
+                token: userData.token,
+                role: userData.role
             }
         }
         case LOG_OUT:{

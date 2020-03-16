@@ -4,7 +4,7 @@ import ky from 'ky';
 export default function doRequest(url, options) {
     const headers = new Headers({'Content-Type': 'application/json'});
     const state = store.getState();
-    const token = state.auth.jwt;
+    const token = state.auth.token;
     const tokenType = state.auth.tokenType;
 
     url = window.location.origin + '/' + url;

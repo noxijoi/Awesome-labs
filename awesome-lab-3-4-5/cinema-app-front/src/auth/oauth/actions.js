@@ -1,6 +1,5 @@
 export const AUTH_ERROR = 'oauth/AUTH_ERROR';
-export const RECEIVE_TOKEN = 'oauth/RECEIVE_TOKEN';
-export const RECEIVE_USER_DATA = 'oauth/AUTH_ERROR';
+export const RECEIVE_USER_DATA = 'oauth/RECEIVE_USER_DATA';
 export const LOG_OUT = 'oauth/LOG_OUT';
 
 export const authError = (errDesc) => {
@@ -17,13 +16,7 @@ export const receiveUserData = (userData) => {
     }
 };
 
-export const receiveToken = (token, service) => {
-    return {
-        type: RECEIVE_TOKEN,
-        token: token,
-        service: service
-    }
-};
+
 
 export const logout = () => {
     return {
