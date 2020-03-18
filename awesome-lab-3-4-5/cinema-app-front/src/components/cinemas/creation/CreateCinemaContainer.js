@@ -2,7 +2,7 @@ import React from "react";
 import {cinemaCreated} from "../actions";
 import CinemaService from "../CinemaService";
 import {connect} from "react-redux";
-import CreateCinema from "./CreateCinema";
+import CinemaForm from "./CinemaForm";
 
 const {Component} = require("react");
 
@@ -13,8 +13,8 @@ class CreateCinemaContainer extends Component {
 
     render() {
         return(
-            <CreateCinema created={this.props.cinema.created}
-                      createCinema={this.props.createCinema}/>
+            <CinemaForm created={this.props.cinema.created}
+                        handleSubmit={this.props.createCinema}/>
                       )
     }
 }

@@ -13,27 +13,29 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function CreateCinema(props) {
-    const create = async (e) =>{
+export default function CinemaForm(props) {
+    const handleSubmit = async (e) =>{
         e.preventDefault();
         const form = e.currentTarget;
         let cinema = {};
-        const formElements =e.target.elements;
+        cinema.id = props.cinemaId;
+        const formElements = e.target.elements;
         cinema.name = formElements.name.value;
         cinema.address = formElements.address.value;
-        props.createCinema(cinema);
+        props.handleSubmit(cinema);
     };
     const classes = useStyles();
+    const cinema = props.cinema | {};
     if(props.created){
         return <Redirect to="/home"/>
     } else{
         return (
-            <form className={classes.root} noValidate onSubmit={create}>
+            <form className={classes.root} noValidate onSubmit={handleSubmit}>
                 <div>
-                    <TextField required id="name" name="name" label="Cinema name"/>
+                    <TextField required id="name" name="name" label="Cinema name" value={cinema.name}/>
                 </div>
                 <div>
-                    <TextField required id="address" name="address" label="Cinema address"/>
+                    <TextField required id="address" name="address" label="Cinema address" value={cinema.address}/>
                 </div>
                 <Button variant="contained" color="primary" type="submit">
                     Create

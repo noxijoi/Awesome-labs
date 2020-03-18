@@ -2,12 +2,13 @@ const appConfig = {
     db: {
         login:'root',
         password:'rootpassword',
-        url:'mongodb://localhost:27017'
+        url:'mongodb://localhost:27018'
     },
     authenticationServices:{
         vk: 'vk',
         yandex: 'yandex',
-        facebook: 'facebook'
+        facebook: 'facebook',
+        google: 'google'
     },
     auth:{
         privateKey: 'тыгыдыкский конь'

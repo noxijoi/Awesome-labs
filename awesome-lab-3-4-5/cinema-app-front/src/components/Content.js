@@ -8,6 +8,7 @@ import YandexAuthContainer from "../auth/oauth/yandex/YandexAuthContainer";
 import {oauthConfig} from "../auth/oauth/oauthConfig";
 import CreateCinemaContainer from "./cinemas/creation/CreateCinemaContainer";
 import CinemaListContainer from "./cinemas/list/CinemaListContainer";
+import EditCinemaContainer from "./cinemas/creation/EditCinemaContainer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -21,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 
 export default function Content() {
-    const yaConfig = oauthConfig.ya;
     const classes = useStyles();
     return (
         <Container>
@@ -32,9 +32,9 @@ export default function Content() {
                 <Route path="/auth/yandex" component={YandexAuthContainer}/>
                 <Route path="/cinemas/new" component={CreateCinemaContainer}/>
                 <Route path="/cinemas" component={CinemaListContainer}/>
+                <Route path="/cinemas/:cinemaId" component={EditCinemaContainer}/>
                 {/*<Route path="/users" component={UsersTable}/>
                 <Route path="/users/:userID" component={UserPage}/>
-                <Route path="/cinemas/:cinemaID" component={CinemaPage}/>
                 <Route path="/movies" component={MoviesList}/>
                 <Route path="/movies/:movieID" component={MoviePage}/>
                 <Route path="/seances" component={SeansesTable}/>
