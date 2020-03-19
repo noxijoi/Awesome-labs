@@ -30,7 +30,7 @@ class EditCinemaContainer extends Component {
 
 export const updateCinema = cinema => {
     return async dispatch => {
-        const result = await CinemaService.update(cinema);
+        const result = await CinemaService.updateCinema(cinema, cinema.id);
         if (result) {
             dispatch(cinemaCreated(true));
         }
@@ -45,7 +45,7 @@ const getCinemaData = id => {
         }
     }
 };
-
+//TODO вставляет данные с предыущего запроса пофиксить
 
 const mapDispatchToProps = dispatch => {
         return {

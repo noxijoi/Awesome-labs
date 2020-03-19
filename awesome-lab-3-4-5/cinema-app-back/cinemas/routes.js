@@ -28,14 +28,13 @@ router.get('/:cinemaId', (req, res) => {
             res.send({error: err.message || "No such cinema."});
         });
 });
-router.put('/:cinemaId', (req, res) => {
+router.put('/:cinemaId', async (req, res) => {
     let cinema = {
         name: req.body.name,
         address: req.body.address
     };
-    cinemaService.updateCinema(req.params.cinemaId, cinema)
-        .then(res.status(200).json())
-        .catch(err => res.send({error: err.message || "Some error occurred while updating cinema."}));
+    const updatedCinema = await cinemaService.updateCinema(req.params.cinemaId, cinema)
+    res.send(updatedCinema);
 });
 router.delete('/:cinemaId', (req, res) => {
     cinemaService.deleteCinema(req.params.cinemaId)

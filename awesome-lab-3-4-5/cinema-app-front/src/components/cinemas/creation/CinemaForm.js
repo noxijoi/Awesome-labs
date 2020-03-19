@@ -31,10 +31,10 @@ export default function CinemaForm(props) {
     return (
         <form className={classes.root} noValidate onSubmit={handleSubmit}>
             <div>
-                <TextField required id="name" name="name" label="Cinema name" value={cinema.name} InputLabelProps={{ shrink: true }} />
+                <TextField required id="name" name="name" label="Cinema name" defaultValue={cinema.name} InputLabelProps={{ shrink: true }} />
             </div>
             <div>
-                <TextField required id="address" name="address" label="Cinema address" value={cinema.address} InputLabelProps={{ shrink: true }} />
+                <TextField required id="address" name="address" label="Cinema address" defaultValue={cinema.address} InputLabelProps={{ shrink: true }} />
             </div>
             <Button variant="contained" color="primary" type="submit">
                 Create
