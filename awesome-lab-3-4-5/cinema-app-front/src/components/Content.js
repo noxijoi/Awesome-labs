@@ -30,9 +30,9 @@ export default function Content() {
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={AuthorizationContainer}/>
                 <Route path="/auth/yandex" component={YandexAuthContainer}/>
-                <Route path="/cinemas/new" component={CreateCinemaContainer}/>
-                <Route path="/cinemas" component={CinemaListContainer}/>
-                <Route path="/cinemas/:cinemaId" component={EditCinemaContainer}/>
+                <Route exact path="/newcinema" component={CreateCinemaContainer}/>
+                <Route exact path="/cinemas" component={CinemaListContainer}/>
+                <Route exact path="/cinemas/:cinemaId" component={EditCinemaContainer}/>
                 {/*<Route path="/users" component={UsersTable}/>
                 <Route path="/users/:userID" component={UserPage}/>
                 <Route path="/movies" component={MoviesList}/>

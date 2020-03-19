@@ -5,6 +5,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from "@material-ui/core/Typography";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -22,6 +23,7 @@ export default function CinemasList(props) {
     const cinemas = props.cinemas;
     console.log(cinemas);
     return <List>{cinemas.map(cinema => (<ListItem alignItems="flex-start">
+        <Link to={'/cinemas/' + cinema._id}>
             <ListItemText
                 primary={cinema.name}
                 secondary={<React.Fragment>
@@ -35,6 +37,7 @@ export default function CinemasList(props) {
                     </Typography>
                 </React.Fragment>}
             />
-        </ListItem>))}
+        </Link>
+    </ListItem>))}
     </List>
 };

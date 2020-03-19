@@ -1,5 +1,5 @@
 import React from "react";
-import {cinemaCreated} from "../actions";
+import {cinemaCreated, receiveCinemaData} from "../actions";
 import CinemaService from "../CinemaService";
 import {connect} from "react-redux";
 import CinemaForm from "./CinemaForm";
@@ -21,7 +21,9 @@ class EditCinemaContainer extends Component {
         return (
             <CinemaForm created={this.props.cinema.created}
                         cinemaId={id}
-                        handleSubmit={this.props.updateCinema}/>
+                        cinema={this.props.cinema}
+                        handleSubmit={this.props.updateCinema}
+            />
         )
     }
 }
@@ -39,7 +41,7 @@ const getCinemaData = id => {
     return async dispatch => {
         const result = await CinemaService.getCinema(id);
         if (result) {
-            dispatch(cinemaCreated(true))
+            dispatch(receiveCinemaData(result.cinema))
         }
     }
 };
@@ -49,14 +51,15 @@ const mapDispatchToProps = dispatch => {
         return {
             cinemaCreated: (created) => dispatch(cinemaCreated(created)),
             updateCinema: (cinema) => dispatch(updateCinema(cinema)),
-            getCinemaData: (id) => dispatch(getCinemaData(id))
+            getCinemaData: (id) => dispatch(getCinemaData(id)),
+            receiveCinemaData:(cinema)=>dispatch(receiveCinemaData(cinema))
         }
     }
 ;
 
 const mapStateToProps = state => {
     return {
-        cinema: state.cinema
+        cinema: state.cinema.cinema
     }
 };
 

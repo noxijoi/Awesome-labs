@@ -17,7 +17,7 @@ class CinemaListContainer extends Component {
         return(
             <Box>
                     <Button variant="outlined" color="primary" id='vkButton'>
-                        <Link href="/cinemas/new">Create new</Link>
+                        <Link href="/newcinema">Create new</Link>
                     </Button>
                     <CinemasList cinemas={this.props.cinemasData}/>
             </Box>

@@ -12,10 +12,11 @@ class CreateCinemaContainer extends Component {
     }
 
     render() {
-        return(
+        return (
             <CinemaForm created={this.props.cinema.created}
-                        handleSubmit={this.props.createCinema}/>
-                      )
+                        handleSubmit={this.props.createCinema}
+            />
+        )
     }
 }
 
