@@ -11,8 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Link from "@material-ui/core/Link";
 import Content from "../Content";
-
-
+import {NavLink} from "react-router-dom";
 
 
 const drawerWidth = 240;
@@ -63,13 +62,16 @@ export const Page = (props) => {
                 <div className={classes.toolbar}/>
                 <Divider/>
                 <List>
-                    {props.options.map((option) => (
-                        <ListItem button key={option.title}>
-                            <Link href={option.url}>
-                                <ListItemText primary={option.title}/>
-                            </Link>
-                        </ListItem>
-                    ))}
+                    {props.options.map((option) => {
+                        console.log(option);
+                        return (
+                                <NavLink to={option.url}>
+                            <ListItem button key={option.title}>
+                                    <ListItemText primary={option.title}/>
+                            </ListItem>
+                                </NavLink>
+                        )
+                    })}
                 </List>
             </Drawer>
             <main className={classes.content}>
