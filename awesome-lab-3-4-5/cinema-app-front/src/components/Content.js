@@ -6,9 +6,12 @@ import {AuthorizationContainer} from "../auth/AuthorizationContainer";
 import {makeStyles} from "@material-ui/core/styles";
 import YandexAuthContainer from "../auth/oauth/yandex/YandexAuthContainer";
 import {oauthConfig} from "../auth/oauth/oauthConfig";
-import CreateCinemaContainer from "./cinemas/creation/CreateCinemaContainer";
-import CinemaListContainer from "./cinemas/list/CinemaListContainer";
-import EditCinemaContainer from "./cinemas/creation/EditCinemaContainer";
+import CreateCinemaContainer from "./cinemas/oneCinema/CreateCinemaContainer";
+import CinemaTableContainer from "./cinemas/table/CinemaTableContainer";
+import EditCinemaContainer from "./cinemas/oneCinema/EditCinemaContainer";
+import CreateMovieContainer from "./movies/oneMovie/CreateMovieContainer";
+import MovieTableContainer from "./movies/table/MovieTableContainer";
+import EditMovieContainer from "./movies/oneMovie/EditMovieContainer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -30,9 +33,15 @@ export default function Content() {
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={AuthorizationContainer}/>
                 <Route path="/auth/yandex" component={YandexAuthContainer}/>
+
                 <Route exact path="/newcinema" component={CreateCinemaContainer}/>
-                <Route exact path="/cinemas" component={CinemaListContainer}/>
+                <Route exact path="/cinemas" component={CinemaTableContainer}/>
                 <Route exact path="/cinemas/:cinemaId" component={EditCinemaContainer}/>
+
+                <Route exact path="/newmovie" component={CreateMovieContainer}/>
+                <Route exact path="/movies" component={MovieTableContainer}/>
+                <Route exact path="/movies/:movieId" component={EditMovieContainer}/>
+
                 {/*<Route path="/users" component={UsersTable}/>
                 <Route path="/users/:userID" component={UserPage}/>
                 <Route path="/movies" component={MoviesList}/>

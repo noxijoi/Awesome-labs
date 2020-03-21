@@ -1,14 +1,14 @@
 import React, {Component} from "react";
-import {receiveCinemasData} from "../actions";
+import {receiveCinemasData} from "../cinemaActions";
 import CinemaService from "../CinemaService";
 import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
-import CinemasList from "./CinemasList";
+import CinemasTable from "./CinemasTable";
 import {connect} from "react-redux";
 
 
-class CinemaListContainer extends Component {
+class CinemaTableContainer extends Component {
     componentDidMount() {
         this.props.getCinemasData();
     }
@@ -16,10 +16,10 @@ class CinemaListContainer extends Component {
     render() {
         return(
             <Box>
-                    <Button variant="outlined" color="primary" id='vkButton'>
+                    <Button variant="outlined" color="primary">
                         <Link href="/newcinema">Create new</Link>
                     </Button>
-                    <CinemasList cinemas={this.props.cinemasData}/>
+                    <CinemasTable cinemas={this.props.cinemasData}/>
             </Box>
         )
     }
@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CinemaListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CinemaTableContainer);

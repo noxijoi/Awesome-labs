@@ -4,6 +4,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import Info from "../../Info";
 
+const {useState} = require("react");
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -15,6 +17,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CinemaForm(props) {
+    const [nameValue, setName] = useState("");
+    const [addressValue, setAddress] = useState("");
+    const [rerender, count] = useState(0);
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -26,15 +31,36 @@ export default function CinemaForm(props) {
         props.handleSubmit(cinema);
     };
     const classes = useStyles();
-    console.log(props.cinema );
     const cinema = props.cinema;
+    if(cinema.name && cinema.address && rerender === 0){
+        setName(cinema.name);
+        setAddress(cinema.address);
+        count(rerender + 1);
+    }
     return (
         <form className={classes.root} noValidate onSubmit={handleSubmit}>
             <div>
-                <TextField required id="name" name="name" label="Cinema name" value={cinema.name} InputLabelProps={{ shrink: true }} />
+                <TextField
+                    required
+                    id="name"
+                    name="name"
+                    label="Cinema name"
+                    value={nameValue}
+                    onChange={(e) => {
+                        setName(e.target.value);
+                    }} />
             </div>
             <div>
-                <TextField required id="address" name="address" label="Cinema address" value={cinema.address} InputLabelProps={{ shrink: true }} />
+                <TextField
+                    required
+                    id="address"
+                    name="address"
+                    label="Cinema address"
+                    value={addressValue}
+                    InputLabelProps={{ shrink: true }}
+                    onChange={(e) => {
+                        setAddress(e.target.value);
+                    }} />
             </div>
             <Button variant="contained" color="primary" type="submit">
                 Create

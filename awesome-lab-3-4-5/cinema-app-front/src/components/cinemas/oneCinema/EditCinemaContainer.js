@@ -1,5 +1,5 @@
 import React from "react";
-import {cinemaCreated, receiveCinemaData} from "../actions";
+import {cinemaCreated, receiveCinemaData} from "../cinemaActions";
 import CinemaService from "../CinemaService";
 import {connect} from "react-redux";
 import CinemaForm from "./CinemaForm";
@@ -30,7 +30,7 @@ class EditCinemaContainer extends Component {
 
 export const updateCinema = cinema => {
     return async dispatch => {
-        const result = await CinemaService.update(cinema);
+        const result = await CinemaService.updateCinema(cinema);
         if (result) {
             dispatch(cinemaCreated(true));
         }
@@ -41,7 +41,7 @@ const getCinemaData = id => {
     return async dispatch => {
         const result = await CinemaService.getCinema(id);
         if (result) {
-            dispatch(receiveCinemaData(result.cinema))
+            dispatch(receiveCinemaData(result))
         }
     }
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import {cinemaCreated} from "../actions";
+import {cinemaCreated} from "../cinemaActions";
 import CinemaService from "../CinemaService";
 import {connect} from "react-redux";
 import CinemaForm from "./CinemaForm";

@@ -1,4 +1,4 @@
-import {CINEMA_CREATED, RECEIVE_CINEMA_DATA, RECEIVE_CINEMAS_DATA} from "./actions";
+import {CINEMA_CREATED, RECEIVE_CINEMA_DATA, RECEIVE_CINEMAS_DATA} from "./cinemaActions";
 
 const initialState = {
     created: false,

@@ -3,49 +3,43 @@ const express = require("express");
 const router = express.Router();
 
 
-router.post('/', (req, res) => {
+//movies
+router.post('/', async (req, res) => {
     let movie = {
         name: req.body.name,
         startDate: req.body.startDate,
         originCountry: req.body.originCountry,
         genre: req.body.genre
     };
-    movieService.createMovie(movie)
-        .then(res.status(200).json())
-        .catch(err => res.send({error: err.message || "Some error occurred while creating the movie."}));
+    const created = await movieService.createMovie(movie);
+    res.send(created);
 });
-router.get('/', (req, res) => {
-    movieService.findAll()
-        .then(movieData => {
-            res.send('movies', {movies: movieData})
-        }).catch(err => {
-        res.send({error: err.message || "Some error occurred while getting movies."});
-    });
+
+router.get('/', async (req, res) => {
+    const movies = await movieService.findAll();
+    res.send({movies:movies});
 });
-router.get('/:movieId', (req, res) => {
-    movieService.findOne(req.params.movieId)
-        .then(movieData => res.send({
-            movie: movieData
-        }))
-        .catch(err => {
-            res.send({err: err.message || "No such movie."});
-        });
+
+
+router.get('/:movieId', async (req, res) => {
+    const movie = await movieService.findOne(req.params.movieId);
+    res.send(movie);
 });
-router.put('/:movieId', (req, res) => {
+
+router.put('/:movieId', async (req, res) => {
     let movie = {
         name: req.body.name,
         startDate: req.body.startDate,
         originCountry: req.body.originCountry,
         genre: req.body.genre
     };
-    movieService.updateMovie(req.params.movieId, movie)
-        .then(res.status(200).json())
-        .catch(err => res.send({error: err.message || "Some error occurred while updating movie."}));
+    const updated = await movieService.updateMovie(req.params.movieId, movie);
+    res.send(updated);
 });
-router.delete('/:movieId', (req, res) => {
-    movieService.deleteMovie(req.params.movieId)
-        .then(res.status(200).json())
-        .catch(err => res.send({error: err.message || "Some error occurred while deleting movie."}));
+
+router.delete('/:movieId', async (req, res) => {
+    const deleted = await movieService.deleteMovie(req.params.movieId);
+    res.send(deleted);
 });
 
 module.exports = router;
