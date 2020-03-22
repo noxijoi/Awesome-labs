@@ -43,35 +43,27 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/', auth, async (req, res) => {
-    userService.findAll()
-        .then(usersData => {
-            res.send({users: usersData})
-        }).catch(err => {
-        res.send({error: err.message || "Some error occurred while getting the User."});
-    });
+    const users = await userService.findAll();
+    res.send(users);
 });
+
 router.get('/:userId', async (req, res) => {
-    userService.findOne(req.params.userId)
-        .then(userData => res.send({
-            user: userData,
-        }))
-        .catch(err => {
-            res.send({error: err.message || "No such user."});
-        });
+    const user = await userService.findOne(req.params.userId);
+    res.send(user);
 });
+
 router.put('/:userId', async (req, res) => {
     let user = {
         login: req.body.login,
         password: req.body.password
     };
-    userService.updateUser(req.params.userId, user)
-        .then(res.status(200).json())
-        .catch(err => res.send({error: err.message || "Some error occurred while updating user."}));
-});
+    const updated = await userService.updateUser(req.params.userId, user);
+    res.send(updated);
+    });
+
 router.delete('/:userId', async (req, res) => {
-    userService.deleteUser(req.params.userId)
-        .then(res.status(200).json())
-        .catch(err => res.send({error: err.message || "Some error occurred while deleting user."}));
+    const deleted = await userService.deleteUser(req.params.userId);
+    res.send(deleted);
 });
 
 module.exports = router;

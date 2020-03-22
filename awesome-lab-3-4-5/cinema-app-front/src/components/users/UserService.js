@@ -12,6 +12,21 @@ class UserService {
         })
     }
 
+    async getUsers() {
+        return doRequest(API.USERS)
+    }
+
+    async getMovie(id) {
+        return doRequest(API.USERS +'/' + id);
+    }
+
+    async updateMovie(user, id){
+        return doRequest(API.USERS + '/' +id, {
+            method: 'PUT',
+            body: JSON.stringify(user)
+        });
+    }
+
 }
 
 export default new UserService();

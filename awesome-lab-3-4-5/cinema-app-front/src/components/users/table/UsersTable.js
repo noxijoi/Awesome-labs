@@ -7,7 +7,6 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import {Paper} from "@material-ui/core";
-import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     table: {
@@ -17,29 +16,24 @@ const useStyles = makeStyles(theme => ({
 
 export default function MoviesTable(props) {
     const classes = useStyles();
-    const movies = props.movies;
+    const users = props.users;
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell>Name</TableCell>
-                        <TableCell align="right">Origin country</TableCell>
-                        <TableCell align="right">Start date</TableCell>
-                        <TableCell align="right">Genre</TableCell>
+                        <TableCell align="right">Login</TableCell>
+                        <TableCell align="right">Authorizaton Service</TableCell>
+                        <TableCell align="right">Role</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {movies.map(movie => (
-                        <TableRow key={movie._id}>
-                            <Link to={'/cinemas/' + movie._id}>
-                                <TableCell component="th" scope="row">
-                                    {movie.name}
-                                </TableCell>
-                            </Link>
-                            <TableCell align="right">{movie.originCountry}</TableCell>
-                            <TableCell align="right">{movie.startDate}</TableCell>
-                            <TableCell align="right">{movie.genre}</TableCell>
+                    {users.map(user => (
+                        <TableRow key={user._id}>
+                            <TableCell component="th" scope="row">{user.login}</TableCell>
+                            <TableCell align="right">{user.authorizationService}</TableCell>
+                            <TableCell align="right">{user.role}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

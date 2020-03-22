@@ -15,31 +15,31 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function MoviesTable(props) {
+export default function CinemasTable(props) {
     const classes = useStyles();
-    const movies = props.movies;
+    const seances = props.seances;
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">Origin country</TableCell>
-                        <TableCell align="right">Start date</TableCell>
-                        <TableCell align="right">Genre</TableCell>
+                        <TableCell>Date</TableCell>
+                        <TableCell align="right">Movie</TableCell>
+                        <TableCell align="right">Cinema</TableCell>
+                        <TableCell align="right">Tickets count</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {movies.map(movie => (
-                        <TableRow key={movie._id}>
-                            <Link to={'/cinemas/' + movie._id}>
+                    {seances.map(seance => (
+                        <TableRow key={seance._id}>
+                            <Link to={'/seances/' + seance._id}>
                                 <TableCell component="th" scope="row">
-                                    {movie.name}
+                                    {seance.date}
                                 </TableCell>
                             </Link>
-                            <TableCell align="right">{movie.originCountry}</TableCell>
-                            <TableCell align="right">{movie.startDate}</TableCell>
-                            <TableCell align="right">{movie.genre}</TableCell>
+                            <TableCell align="right">{seance.movie}</TableCell>
+                            <TableCell align="right">{seance.cinema}</TableCell>
+                            <TableCell align="right">{seance.ticketCount}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

@@ -24,9 +24,6 @@ mongoose.connect(config.db.url, {
 	process.exit();
 });
 
-app.get('/', function (req, res) {
-    res.render('homepage');
-});
 
 app.use(bodyParser.urlencoded({extended:true}));
 
