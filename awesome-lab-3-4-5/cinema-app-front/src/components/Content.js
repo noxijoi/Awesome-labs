@@ -12,6 +12,9 @@ import EditCinemaContainer from "./cinemas/oneCinema/EditCinemaContainer";
 import CreateMovieContainer from "./movies/oneMovie/CreateMovieContainer";
 import MovieTableContainer from "./movies/table/MovieTableContainer";
 import EditMovieContainer from "./movies/oneMovie/EditMovieContainer";
+import SeanceTableContainer from "./seances/table/SeanceTableContainer";
+import EditSeanceContainer from "./seances/oneSeance/EditSeanceContainer";
+import CreateSeanceContainer from "./seances/oneSeance/CreateSeanceContainer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -42,12 +45,10 @@ export default function Content() {
                 <Route exact path="/movies" component={MovieTableContainer}/>
                 <Route exact path="/movies/:movieId" component={EditMovieContainer}/>
 
-                {/*<Route path="/users" component={UsersTable}/>
-                <Route path="/users/:userID" component={UserPage}/>
-                <Route path="/movies" component={MoviesList}/>
-                <Route path="/movies/:movieID" component={MoviePage}/>
-                <Route path="/seances" component={SeansesTable}/>
-                <Route path="/seances/:seanceID" component={SeansesPage}/>*/}
+                <Route exact path="/seances/:seanceId" component={EditSeanceContainer}/>
+                <Route exact path="/newseance" component={CreateSeanceContainer}/>
+                <Route exact path="/seances" component={SeanceTableContainer}/>
+
             </div>
         </Container>
     );

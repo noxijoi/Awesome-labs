@@ -1,4 +1,4 @@
-import {SEANCE_CREATED, RECEIVE_SEANCE_DATA, RECEIVE_SEANCES_DATA} from "./seancesActions";
+import {SEANCE_CREATED, RECEIVE_SEANCE_DATA, RECEIVE_SEANCES_DATA} from "./seanceActions";
 
 const initialState = {
     created: false,

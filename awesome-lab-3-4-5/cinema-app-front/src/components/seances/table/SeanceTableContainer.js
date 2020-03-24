@@ -4,7 +4,7 @@ import SeanceService from "../SeanceService";
 import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
-import SeancesTable from "./SeancesTable";
+import SeanceTable from "./SeanceTable";
 import {connect} from "react-redux";
 
 
@@ -19,7 +19,7 @@ class SeanceTableContainer extends Component {
                 <Button variant="outlined" color="primary">
                     <Link href="/newseance">Create new</Link>
                 </Button>
-                <SeancesTable seances={this.props.seancesData}/>
+                <SeanceTable seances={this.props.seancesData}/>
             </Box>
         )
     }
