@@ -6,26 +6,26 @@ import Link from "@material-ui/core/Link";
 import {oauthConfig} from "./oauth/oauthConfig";
 
 export class AuthorizationContainer extends Component {
+    buildLink = (baseUrl,params) =>{
+        let search = '?';
+        for (const key in params) {
+            search += `&${key}=${params[key]}`;
+        }
+        return `${baseUrl}${search}`;
+    };
+
     render() {
         const yaConfig = oauthConfig.ya;
-        const vkConfig = oauthConfig.vk;
-        const fbConfig = oauthConfig.fb;
-        const vkURL = vkConfig.URL + '?response_type=token&' + 'client_id=' + vkConfig.ID + '&redirect_uri=' + vkConfig.redirectURL;
-        const yaURL = yaConfig.URL + '?response_type=token&' + 'client_id=' + yaConfig.ID + '&redirect_uri=' + yaConfig.redirectURL;
-        const fbURL = fbConfig.URL + '?response_type=token&' + 'client_id=' + fbConfig.ID + '&redirect_uri=' + fbConfig.redirectURL;
+        const googleConfig = oauthConfig.google;
+        const yaURL = this.buildLink(yaConfig.url, yaConfig.params);
+        const googleURL = this.buildLink(googleConfig.url, googleConfig.params);
         return (
             <div className="loginForm">
                 <Box>
                     <Button variant="outlined" color="primary" id='vkButton'>
-                        <Link href={vkURL}>Authorize with vk</Link>
+                        <Link href={googleURL}>Authorize with Google</Link>
                     </Button>
                 </Box>
-                <Box>
-                    <Button variant="outlined" color="primary" id="fbButton">
-                        <Link href={fbURL}>Authorize with Facebook</Link>
-                    </Button>
-                </Box>
-
                 <Box>
                     <Button variant="outlined" color="primary" id="yaButton">
                         <Link href={yaURL}>Authorize with Yandex</Link>

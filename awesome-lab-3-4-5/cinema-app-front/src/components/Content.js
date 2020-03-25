@@ -15,6 +15,7 @@ import EditMovieContainer from "./movies/oneMovie/EditMovieContainer";
 import SeanceTableContainer from "./seances/table/SeanceTableContainer";
 import EditSeanceContainer from "./seances/oneSeance/EditSeanceContainer";
 import CreateSeanceContainer from "./seances/oneSeance/CreateSeanceContainer";
+import GoogleAuthContainer from "../auth/oauth/google/GoogleAuthContainer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -36,6 +37,7 @@ export default function Content() {
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={AuthorizationContainer}/>
                 <Route path="/auth/yandex" component={YandexAuthContainer}/>
+                <Route path="/auth/google" component={GoogleAuthContainer}/>
 
                 <Route exact path="/newcinema" component={CreateCinemaContainer}/>
                 <Route exact path="/cinemas" component={CinemaTableContainer}/>

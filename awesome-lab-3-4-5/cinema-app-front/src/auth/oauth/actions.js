@@ -17,7 +17,6 @@ export const receiveUserData = (userData) => {
 };
 
 
-
 export const logout = () => {
     return {
         type: LOG_OUT
