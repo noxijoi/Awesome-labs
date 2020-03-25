@@ -5,6 +5,7 @@ const express = require("express");
 const YandexService = require("../auth/YandexService");
 const router = express.Router();
 
+
 router.post('/login', async (req, res) => {
     const accessToken = req.body.accessToken;
     const accessService = req.body.service;

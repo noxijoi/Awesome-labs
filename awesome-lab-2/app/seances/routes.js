@@ -47,7 +47,7 @@ module.exports = (app) => {
             date: req.body.date,
             movie: req.body.movie,
             cinema: req.body.cinema,
-            tickerCount: req.body.tickerCount
+            ticketCount: req.body.ticketCount
         };
         seanceService.updateSeance(req.params.seanceId, seance)
             .then(res.render('ok', {message: "seance updated"}))

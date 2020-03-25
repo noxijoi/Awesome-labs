@@ -20,7 +20,7 @@ class CreateSeanceContainer extends Component {
 
     render() {
         return (
-            <SeanceForm created={this.props.created}
+            <SeanceForm created={this.props.seance.created}
                         handleSubmit={this.props.createSeance}
                         movies={this.props.movies}
                         cinemas={this.props.cinemas}

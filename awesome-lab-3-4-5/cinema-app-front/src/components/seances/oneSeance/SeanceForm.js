@@ -58,7 +58,7 @@ export default function SeanceForm(props) {
         setDate(seance.date);
         setMovie(seance.movie);
         setCinema(seance.cinema);
-        setTicketCount(seance.tickerCount);
+        setTicketCount(seance.ticketCount);
         count(false);
     }
 

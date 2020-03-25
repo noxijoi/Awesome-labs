@@ -17,8 +17,19 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    const seances = await seanceService.findAll()
-    res.send(seances);
+    const seances = await seanceService.findAll();
+    let seancesDtos =[];
+    for (const seance of seances) {
+        const movie = await movieService.findOne(seance.movieId);
+        const cinema = await  cinemasService.findOne(seance.cinemaId);
+        let dto = {};
+        dto.ticketCount = seance.ticketCount;
+        dto.date = seance.date;
+        dto.movie = movie;
+        dto.cinema = cinema;
+        seancesDtos.push(dto)
+    }
+    res.send(seancesDtos);
 });
 
 router.get('/:seanceId', async (req, res) => {
@@ -35,7 +46,7 @@ router.put('/:seanceId', async (req, res) => {
         date: req.body.date,
         movie: req.body.movie,
         cinema: req.body.cinema,
-        tickerCount: req.body.tickerCount
+        ticketCount: req.body.ticketCount
     };
     const updates = await seanceService.updateSeance(req.params.seanceId, seance);
     res.send(updates);

@@ -16,7 +16,7 @@ const seanceReducer = (state = initialState, action) => {
         case RECEIVE_SEANCES_DATA:
             return {
                 ...state,
-                seancesData: action.seancesData.seances
+                seancesData: action.seancesData
             };
         case RECEIVE_SEANCE_DATA:
             return {

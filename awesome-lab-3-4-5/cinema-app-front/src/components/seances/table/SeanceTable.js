@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function CinemasTable(props) {
+export default function SeanceTable(props) {
     const classes = useStyles();
     const seances = props.seances;
     return (
@@ -37,8 +37,8 @@ export default function CinemasTable(props) {
                                     {seance.date}
                                 </TableCell>
                             </Link>
-                            <TableCell align="right">{seance.movie}</TableCell>
-                            <TableCell align="right">{seance.cinema}</TableCell>
+                            <TableCell align="right">{seance.movie.name}</TableCell>
+                            <TableCell align="right">{seance.cinema.name}</TableCell>
                             <TableCell align="right">{seance.ticketCount}</TableCell>
                         </TableRow>
                     ))}
