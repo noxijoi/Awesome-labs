@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
         dto.date = seance.date;
         dto.movie = movie;
         dto.cinema = cinema;
+        dto._id=seance._id;
         seancesDtos.push(dto)
     }
     res.send(seancesDtos);

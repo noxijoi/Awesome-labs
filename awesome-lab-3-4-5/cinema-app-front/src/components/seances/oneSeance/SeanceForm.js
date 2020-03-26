@@ -28,12 +28,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SeanceForm(props) {
-    const [dateValue, setDate] = useState(new Date());
-    const [movieValue, setMovie] = useState({});
-    const [cinemaValue, setCinema] = useState({});
-    const [ticketCount, setTicketCount] = useState(0);
-    const [rerender, count] = useState(true);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -53,85 +47,59 @@ export default function SeanceForm(props) {
     const cinemas = props.cinemas ? props.cinemas : [];
     const movies = props.movies ? props.movies : [];
 
-    console.log(movies);
-    if(seance.date && rerender ){
-        setDate(seance.date);
-        setMovie(seance.movie);
-        setCinema(seance.cinema);
-        setTicketCount(seance.ticketCount);
-        count(false);
-    }
-
     return (
         <form className={classes.root} noValidate onSubmit={handleSubmit}>
             <div>
-                <TextField
+                <InputLabel shrink={true}>Tickets count</InputLabel>
+                <input
                     required
                     id="ticketCount"
                     name="ticketCount"
-                    label="Tickets count"
-                    value={ticketCount}
-                    onChange={(e) => {
-                        setTicketCount(e.target.value);
-                    }} />
+                    value={seance.ticketCount}
+                     />
             </div>
             <div>
-                <TextField
+                <InputLabel shrink={true}>Date</InputLabel>
+                <input
                     id="date"
-                    label="date"
                     name ="date"
                     type="date"
-                    value={dateValue}
+                    value={seance.date}
                     className={classes.textField}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    onChange={(e) => {
-                        setDate(e.target.value);
-                    }}
                 />
             </div>
             <div>
                 <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="movies">Movie</InputLabel>
-                    <Select
-                        native
-                        value={movieValue._id}
-                        onChange={setMovie}
-                        inputProps={{
-                            name: 'movie',
-                            id: 'movie',
-                        }}
-                    >
+                    <div>Movie</div>
+                    <select id="movies">
                         {movies.map(movie =>(
-                            <option value={movie._id}>{movie.name}</option>
+                            <option value={movie._id}
+                                    selected={seance.movie && seance.movie._id === movie._id}>
+                                {movie.name}
+                            </option>
                         ))}
-                    </Select>
+                    </select>
                 </FormControl>
             </div>
             <div>
                 <FormControl className={classes.formControl}>
-                    <InputLabel htmlFor="cinemas">Cinema</InputLabel>
-                    <Select
-                        native
-                        value={cinemaValue._id}
-                        onChange={setCinema}
-                        inputProps={{
-                            name: 'cinema',
-                            id: 'cinema',
-                        }}
+                    <div>Cinema</div>
+                    <select
+                        id="cinemas"
                     >
                         {cinemas.map(cinema =>(
-                            <option value={cinema._id}>{cinema.name}</option>
+                            <option value={cinema._id}
+                            selected={seance.cinema && seance.cinema._id === cinema._id}>
+                        {cinema.name}
+                            </option>
                         ))}
-                    </Select>
+                    </select>
                 </FormControl>
             </div>
             <Button variant="contained" color="primary" type="submit">
                 Create
             </Button>
             <div hidden={!props.created}>
-
                 <Info
                     text="Done"
                 />

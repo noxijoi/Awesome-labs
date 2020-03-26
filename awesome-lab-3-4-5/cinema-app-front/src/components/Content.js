@@ -16,6 +16,7 @@ import SeanceTableContainer from "./seances/table/SeanceTableContainer";
 import EditSeanceContainer from "./seances/oneSeance/EditSeanceContainer";
 import CreateSeanceContainer from "./seances/oneSeance/CreateSeanceContainer";
 import GoogleAuthContainer from "../auth/oauth/google/GoogleAuthContainer";
+import UserTableContainer from "./users/table/UserTableContainer";
 
 
 const useStyles = makeStyles(theme => ({
@@ -51,6 +52,7 @@ export default function Content() {
                 <Route exact path="/newseance" component={CreateSeanceContainer}/>
                 <Route exact path="/seances" component={SeanceTableContainer}/>
 
+                <Route exact path="/users" component={UserTableContainer}/>
             </div>
         </Container>
     );
