@@ -14,6 +14,8 @@ router.post('/login', async (req, res) => {
         case appConfig.authenticationServices.yandex:
             login = await YandexService.getUserEmail(accessToken);
             break;
+        case appConfig.authenticationServices.google:
+            login = await GoogleService.getUserEmail(code);
         case appConfig.authenticationServices.facebook:
             break;
         case appConfig.authenticationServices.vk:

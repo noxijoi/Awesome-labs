@@ -18,7 +18,7 @@ export const oauthConfig = {
         }
     },
     google: {
-        url:"",
+        url:"https://accounts.google.com/o/oauth2/v2/auth",
         params: {
             'client_id': '836613618566-5p8injl5mstqtst4hnu2933t2gfnvhn9.apps.googleusercontent.com',
             'redirect_uri': 'http://localhost:3000/auth/google',

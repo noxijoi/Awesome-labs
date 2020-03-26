@@ -1,9 +1,10 @@
 import * as queryString from "query-string";
 import {Redirect} from "react-router";
-import React from "react";
+import React, {Component} from "react";
 import {CircularProgress} from "@material-ui/core";
 import UserService from "../../../components/users/UserService";
 import {authError, receiveUserData} from "../actions";
+import {connect} from "react-redux";
 
 class GoogleAuthContainer extends Component {
     componentDidMount() {
@@ -36,7 +37,7 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = state => {
+const mapDispatchToProps = dispatch => {
     return {
         login: (code) => dispatch(login(code)),
     }
