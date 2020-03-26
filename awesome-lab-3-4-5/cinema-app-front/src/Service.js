@@ -5,6 +5,7 @@ export default function doRequest(url, options) {
     const headers = new Headers({'Content-Type': 'application/json'});
     const state = store.getState();
     const token = state.auth.token;
+    console.log(state.auth);
     const tokenType = state.auth.tokenType;
 
     url = window.location.origin + '/' + url;

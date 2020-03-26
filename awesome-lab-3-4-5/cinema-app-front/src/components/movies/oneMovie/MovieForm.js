@@ -3,8 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import {makeStyles} from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import Info from "../../Info";
-
-const {useState} = require("react");
+import {InputLabel} from "@material-ui/core";
 
 
 const useStyles = makeStyles(theme => ({
@@ -17,12 +16,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function MovieForm(props) {
-    const [nameValue, setName] = useState("");
-    const [startDateValue, setDate] = useState(new Date());
-    const [originCountryValue, setCountry] = useState("");
-    const [genreValue, setGenre] = useState("");
-    const [rerender, setRerender] = useState(true);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -37,65 +30,45 @@ export default function MovieForm(props) {
     };
     const classes = useStyles();
     const movie = props.movie | {};
-    if (movie.name && rerender) {
-        setName(movie.name);
-        setDate(movie.address);
-        setCountry(movie.originCountry);
-        setGenre(movie.genre);
-        setRerender(true);
-    }
+
     return (
         <form className={classes.root} noValidate onSubmit={handleSubmit}>
             <div>
-                <TextField
+                <InputLabel shrink={true}>Name</InputLabel>
+                <input
                     required
                     id="name"
                     name="name"
-                    label="Movie name"
-                    value={nameValue}
-                    onChange={(e) => {
-                        setName(e.target.value);
-                    }}/>
+                    value={movie.name}
+                    />
             </div>
             <div>
-                <TextField
+                <InputLabel shrink={true}>Start date</InputLabel>
+                <input
                     id="startDate"
-                    label="Start date"
                     name ="startDate"
                     type="date"
-                    value={startDateValue}
+                    value={movie.startDate}
                     className={classes.textField}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    onChange={(e) => {
-                        setDate(e.target.value);
-                    }}
                 />
             </div>
             <div>
-                <TextField
+                <InputLabel shrink={true}>Origin country</InputLabel>
+                <input
                     required
                     id="originCountry"
                     name="originCountry"
-                    label="Origin country"
-                    value={originCountryValue}
-                    InputLabelProps={{shrink: true}}
-                    onChange={(e) => {
-                        setCountry(e.target.value);
-                    }}/>
+                    value={movie.originCountry}
+                    />
             </div>
             <div>
-                <TextField
+                <InputLabel shrink={true}>Genre</InputLabel>
+                <input
                     required
                     id="genre"
                     name="genre"
-                    label="Genre"
-                    value={genreValue}
-                    InputLabelProps={{shrink: true}}
-                    onChange={(e) => {
-                        setGenre(e.target.value);
-                    }}/>
+                    value={movie.genre}
+                    />
             </div>
             <Button variant="contained" color="primary" type="submit">
                 Create

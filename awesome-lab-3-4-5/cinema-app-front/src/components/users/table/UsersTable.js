@@ -23,7 +23,6 @@ export default function MoviesTable(props) {
                 <TableHead>
                     <TableRow>
                         <TableCell>Name</TableCell>
-                        <TableCell align="right">Login</TableCell>
                         <TableCell align="right">Authorizaton Service</TableCell>
                         <TableCell align="right">Role</TableCell>
                     </TableRow>

@@ -1,14 +1,12 @@
 import React, {Component} from "react";
 import Box from "@material-ui/core/Box";
-import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
 import {connect} from "react-redux";
-import {receiveMoviesData} from "../movieActions";
 import UsersTable from "./UsersTable";
 import UserService from "../UserService";
+import {receiveUsersData} from "../userActions";
 
 
-class UsersTableContainer extends Component {
+class UserTableContainer extends Component {
     componentDidMount() {
         this.props.getUsersData();
     }
@@ -16,10 +14,7 @@ class UsersTableContainer extends Component {
     render() {
         return(
             <Box>
-                <Button variant="outlined" color="primary" >
-                    <Link href="/newMovie">Create new</Link>
-                </Button>
-                <UsersTable movies={this.props.usersData}/>
+                <UsersTable users={this.props.usersData}/>
             </Box>
         )
     }
@@ -27,8 +22,12 @@ class UsersTableContainer extends Component {
 
 const getUsersData = () => {
     return async dispatch => {
-        const users = await UserService.getUsers();
-        dispatch(receiveMoviesData(users));
+        try {
+            const users = await UserService.getUsers();
+            dispatch(receiveUsersData(users));
+        } catch (e) {
+            console.log(e);
+        }
     }
 };
 
@@ -40,7 +39,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        receiveUsersData: (moviesData) => dispatch(receiveMoviesData(moviesData)),
+        receiveUsersData: (moviesData) => dispatch(receiveUsersData(moviesData)),
         getUsersData: () => dispatch(getUsersData())
     }
 };
