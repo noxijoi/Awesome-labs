@@ -3,6 +3,7 @@ const auth = require('../auth/auth');
 const appConfig = require('../config');
 const express = require("express");
 const YandexService = require("../auth/YandexService");
+const GoogleService = require("../auth/GoogleService");
 const router = express.Router();
 
 
@@ -15,7 +16,7 @@ router.post('/login', async (req, res) => {
             login = await YandexService.getUserEmail(accessToken);
             break;
         case appConfig.authenticationServices.google:
-            login = await GoogleService.getUserEmail(code);
+            login = await GoogleService.getUserEmail(accessToken);
         case appConfig.authenticationServices.facebook:
             break;
         case appConfig.authenticationServices.vk:
