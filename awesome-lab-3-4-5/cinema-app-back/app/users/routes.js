@@ -1,6 +1,6 @@
 const userService = require('./userService');
 const auth = require('../auth/auth');
-const appConfig = require('../config');
+const appConfig = require('../../config');
 const express = require("express");
 const YandexService = require("../auth/YandexService");
 const GoogleService = require("../auth/GoogleService");

@@ -49,5 +49,5 @@
     "react-router-dom": "^5.1.2",
     "redux-thunk": "^2.3.0"
   },
-  "proxy": "http://localhost:3030"
+  "proxy": "http://node:3030"
 }

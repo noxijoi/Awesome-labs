@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
-const appConfig = require('../config');
+const appConfig = require('../../config');
 
 const UserSchema = mongoose.Schema({
     login: {

@@ -2,7 +2,7 @@ const appConfig = {
     db: {
         login:'root',
         password:'rootpassword',
-        url:'mongodb://localhost:27018'
+        url:'mongodb://mongodb:27017'
     },
     authenticationServices:{
         vk: 'vk',

@@ -5,10 +5,10 @@ const app = express();
 const config = require('./config');
 const mongoose = require('mongoose');
 
-const userRouter = require('./users/routes');
-const seancesRouter = require('./seances/routes');
-const moviesRouter = require('./movies/routes');
-const cinemasRouter = require('./cinemas/routes');
+const userRouter = require('./app/users/routes');
+const seancesRouter = require('./app/seances/routes');
+const moviesRouter = require('./app/movies/routes');
+const cinemasRouter = require('./app/cinemas/routes');
 
 mongoose.Promise = global.Promise;
 

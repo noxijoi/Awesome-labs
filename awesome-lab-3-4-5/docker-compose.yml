@@ -1,5 +1,18 @@
 version: '3.7'
 services:
+  node:
+    build:
+      context: cinema-app-back
+      dockerfile: Dockerfile
+    ports:
+      - 3030:3000
+    depends_on:
+      - mongodb
+    networks:
+      - back
+      - front
+    restart: always
+
   mongodb:
     image: mongo:latest
     environment:
@@ -9,6 +22,25 @@ services:
       - 27018:27017
     volumes:
       - mongodb_data_container:/data/db
+    networks:
+      - back
+    restart: always
+
+  react:
+    build:
+      context: cinema-app-front
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    restart: always
+    networks:
+      - front
+    depends_on:
+      - node
+
+networks:
+  back:
+  front:
 
 volumes:
   mongodb_data_container:
